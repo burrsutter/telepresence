@@ -1,0 +1,499 @@
+   0.0 TEL | Telepresence 0.88 launched at Sat May 26 19:52:07 2018
+   0.0 TEL |   /usr/local/bin/telepresence --swap-deployment hello-flask --expose 5000
+   0.5 TEL | Context: myproject/192-168-99-106:8443/admin, namespace: myproject, kubectl_command: oc
+   0.5 TEL | [1] Launching: kubectl version --short
+   0.5 TEL | [2] Launching: oc version
+   0.5 TEL | [3] Launching: uname -a
+   0.5 TEL | Python 3.6.5 (default, Apr 25 2018, 14:22:56)
+   0.5 TEL | [GCC 4.2.1 Compatible Apple LLVM 8.0.0 (clang-800.0.42.1)]
+   0.5   3 | Darwin MacDaddy.local 15.6.0 Darwin Kernel Version 15.6.0: Tue Jan 30 11:45:51 PST 2018; root:xnu-3248.73.8~1/RELEASE_X86_64 x86_64
+   0.5 TEL | [3] exit 0
+   0.5 TEL | [4] Capturing: minishift ip
+   0.6   1 | Client Version: v1.10.1
+   0.6   1 | Server Version: v1.9.1+a0ce1bc657
+   0.6 TEL | [1] exit 0
+   1.2 TEL | Looks like we're in a local VM, e.g. minikube.
+   1.2 TEL | [5] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pods telepresence-connectivity-check --ignore-not-found
+   1.4   2 | oc v3.9.0+191fece
+   1.4   2 | kubernetes v1.9.1+a0ce1bc657
+   1.4   2 | features: Basic-Auth
+   1.4   2 | 
+   1.4   2 | Server https://192.168.99.106:8443
+   1.4   2 | openshift v3.9.0+8e3cb9b-8
+   1.4   2 | kubernetes v1.9.1+a0ce1bc657
+   1.4 TEL | [2] exit 0
+   1.5 TEL | [6] Capturing: ssh -V
+   1.5 TEL | [7] Capturing: which torsocks
+   1.5 TEL | [8] Capturing: which sshfs
+   1.6 TEL | BEGIN SPAN main.py:51(main)
+   2.4 TEL | Scout info: {'latest_version': '0.88', 'application': 'telepresence', 'notices': []}
+   2.4 TEL | BEGIN SPAN proxy.py:150(start_proxy)
+   2.4 TEL | [9] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get rc -o name --selector openshift.io/deployment-config.name=hello-flask
+   2.6 TEL | [10] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get rc -o json --export hello-flask-1
+   2.8 TEL | [11] Running: oc --context myproject/192-168-99-106:8443/admin --namespace myproject apply -f -
+   3.2  11 | replicationcontroller "hello-flask-1" configured
+   3.2 TEL | [12] Running: oc --context myproject/192-168-99-106:8443/admin --namespace myproject delete pod --selector deployment=hello-flask-1
+   3.4  12 | pod "hello-flask-1-cngnw" deleted
+   3.4 TEL | BEGIN SPAN remote.py:164(get_remote_info)
+   3.4 TEL | BEGIN SPAN remote.py:82(get_deployment_json)
+   3.4 TEL | [13] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get rc -o json --export --selector=telepresence=ec5081e6-9698-4966-804d-70576ec12083
+   3.5 TEL | END SPAN remote.py:82(get_deployment_json)    0.2s
+   3.5 TEL | Searching for Telepresence pod:
+   3.5 TEL |   with name hello-flask-*
+   3.5 TEL |   with labels {'app': 'hello-flask', 'deployment': 'hello-flask-1', 'deploymentconfig': 'hello-flask', 'telepresence': 'ec5081e6-9698-4966-804d-70576ec12083'}
+   3.5 TEL |   with namespace myproject
+   3.5 TEL | [14] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod -o json --export --selector=telepresence=ec5081e6-9698-4966-804d-70576ec12083
+   3.7 TEL | Checking hello-flask-1-cngnw
+   3.7 TEL | Looks like we've found our pod!
+   3.7 TEL | BEGIN SPAN remote.py:122(wait_for_pod)
+   3.7 TEL | [15] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+   4.1 TEL | [16] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+   4.6 TEL | [17] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+   5.0 TEL | [18] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+   5.4 TEL | [19] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+   5.9 TEL | [20] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+   6.3 TEL | [21] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+   6.8 TEL | [22] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+   7.2 TEL | [23] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+   7.6 TEL | [24] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+   8.1 TEL | [25] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+   8.5 TEL | [26] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+   9.0 TEL | [27] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+   9.4 TEL | [28] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+   9.6 TEL | [28] exit 1 in 0.18 secs.
+   9.8 TEL | [29] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  10.0 TEL | [29] exit 1 in 0.18 secs.
+  10.3 TEL | [30] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  10.5 TEL | [30] exit 1 in 0.18 secs.
+  10.7 TEL | [31] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  10.9 TEL | [31] exit 1 in 0.18 secs.
+  11.1 TEL | [32] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  11.3 TEL | [32] exit 1 in 0.18 secs.
+  11.6 TEL | [33] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  11.7 TEL | [33] exit 1 in 0.18 secs.
+  12.0 TEL | [34] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  12.2 TEL | [34] exit 1 in 0.18 secs.
+  12.4 TEL | [35] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  12.6 TEL | [35] exit 1 in 0.18 secs.
+  12.9 TEL | [36] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  13.0 TEL | [36] exit 1 in 0.18 secs.
+  13.3 TEL | [37] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  13.5 TEL | [37] exit 1 in 0.18 secs.
+  13.7 TEL | [38] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  13.9 TEL | [38] exit 1 in 0.18 secs.
+  14.2 TEL | [39] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  14.4 TEL | [39] exit 1 in 0.19 secs.
+  14.6 TEL | [40] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  14.8 TEL | [40] exit 1 in 0.19 secs.
+  15.1 TEL | [41] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  15.2 TEL | [41] exit 1 in 0.18 secs.
+  15.5 TEL | [42] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  15.7 TEL | [42] exit 1 in 0.19 secs.
+  15.9 TEL | [43] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  16.1 TEL | [43] exit 1 in 0.17 secs.
+  16.4 TEL | [44] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  16.6 TEL | [44] exit 1 in 0.19 secs.
+  16.9 TEL | [45] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  17.1 TEL | [45] exit 1 in 0.18 secs.
+  17.4 TEL | [46] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  17.5 TEL | [46] exit 1 in 0.18 secs.
+  17.8 TEL | [47] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  18.0 TEL | [47] exit 1 in 0.19 secs.
+  18.2 TEL | [48] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  18.4 TEL | [48] exit 1 in 0.19 secs.
+  18.7 TEL | [49] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  18.9 TEL | [49] exit 1 in 0.18 secs.
+  19.1 TEL | [50] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  19.3 TEL | [50] exit 1 in 0.17 secs.
+  19.5 TEL | [51] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  19.7 TEL | [51] exit 1 in 0.18 secs.
+  20.0 TEL | [52] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  20.2 TEL | [52] exit 1 in 0.18 secs.
+  20.4 TEL | [53] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  20.6 TEL | [53] exit 1 in 0.19 secs.
+  20.9 TEL | [54] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  21.0 TEL | [54] exit 1 in 0.17 secs.
+  21.3 TEL | [55] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  21.5 TEL | [55] exit 1 in 0.18 secs.
+  21.7 TEL | [56] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  21.9 TEL | [56] exit 1 in 0.18 secs.
+  22.2 TEL | [57] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  22.3 TEL | [57] exit 1 in 0.18 secs.
+  22.6 TEL | [58] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  22.8 TEL | [58] exit 1 in 0.17 secs.
+  23.0 TEL | [59] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  23.2 TEL | [59] exit 1 in 0.17 secs.
+  23.4 TEL | [60] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  23.6 TEL | [60] exit 1 in 0.19 secs.
+  23.9 TEL | [61] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  24.1 TEL | [61] exit 1 in 0.18 secs.
+  24.3 TEL | [62] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  24.5 TEL | [62] exit 1 in 0.20 secs.
+  24.8 TEL | [63] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  25.0 TEL | [63] exit 1 in 0.19 secs.
+  25.2 TEL | [64] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  25.4 TEL | [64] exit 1 in 0.18 secs.
+  25.7 TEL | [65] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  25.8 TEL | [65] exit 1 in 0.19 secs.
+  26.1 TEL | [66] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  26.3 TEL | [66] exit 1 in 0.18 secs.
+  26.5 TEL | [67] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  26.7 TEL | [67] exit 1 in 0.19 secs.
+  27.0 TEL | [68] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  27.2 TEL | [68] exit 1 in 0.18 secs.
+  27.4 TEL | [69] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  27.6 TEL | [69] exit 1 in 0.19 secs.
+  27.8 TEL | [70] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  28.0 TEL | [70] exit 1 in 0.20 secs.
+  28.3 TEL | [71] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  28.5 TEL | [71] exit 1 in 0.18 secs.
+  28.7 TEL | [72] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  28.9 TEL | [72] exit 1 in 0.18 secs.
+  29.2 TEL | [73] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  29.4 TEL | [73] exit 1 in 0.19 secs.
+  29.6 TEL | [74] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  29.8 TEL | [74] exit 1 in 0.18 secs.
+  30.0 TEL | [75] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  30.2 TEL | [75] exit 1 in 0.18 secs.
+  30.5 TEL | [76] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  30.7 TEL | [76] exit 1 in 0.18 secs.
+  30.9 TEL | [77] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  31.1 TEL | [77] exit 1 in 0.18 secs.
+  31.3 TEL | [78] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  31.5 TEL | [78] exit 1 in 0.17 secs.
+  31.8 TEL | [79] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  31.9 TEL | [79] exit 1 in 0.18 secs.
+  32.2 TEL | [80] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  32.4 TEL | [80] exit 1 in 0.18 secs.
+  32.6 TEL | [81] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  32.8 TEL | [81] exit 1 in 0.18 secs.
+  33.1 TEL | [82] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  33.2 TEL | [82] exit 1 in 0.17 secs.
+  33.5 TEL | [83] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  33.7 TEL | [83] exit 1 in 0.18 secs.
+  33.9 TEL | [84] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  34.1 TEL | [84] exit 1 in 0.18 secs.
+  34.4 TEL | [85] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  34.5 TEL | [85] exit 1 in 0.18 secs.
+  34.8 TEL | [86] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  35.0 TEL | [86] exit 1 in 0.18 secs.
+  35.2 TEL | [87] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  35.4 TEL | [87] exit 1 in 0.19 secs.
+  35.7 TEL | [88] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  35.9 TEL | [88] exit 1 in 0.18 secs.
+  36.1 TEL | [89] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  36.3 TEL | [89] exit 1 in 0.18 secs.
+  36.5 TEL | [90] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  36.7 TEL | [90] exit 1 in 0.18 secs.
+  37.0 TEL | [91] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  37.1 TEL | [91] exit 1 in 0.18 secs.
+  37.4 TEL | [92] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  37.6 TEL | [92] exit 1 in 0.17 secs.
+  37.9 TEL | [93] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  38.1 TEL | [93] exit 1 in 0.18 secs.
+  38.4 TEL | [94] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  38.5 TEL | [94] exit 1 in 0.18 secs.
+  38.8 TEL | [95] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  39.0 TEL | [95] exit 1 in 0.18 secs.
+  39.2 TEL | [96] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  39.4 TEL | [96] exit 1 in 0.18 secs.
+  39.6 TEL | [97] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  39.8 TEL | [97] exit 1 in 0.17 secs.
+  40.1 TEL | [98] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  40.3 TEL | [98] exit 1 in 0.17 secs.
+  40.5 TEL | [99] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  40.7 TEL | [99] exit 1 in 0.18 secs.
+  40.9 TEL | [100] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  41.1 TEL | [100] exit 1 in 0.18 secs.
+  41.4 TEL | [101] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  41.5 TEL | [101] exit 1 in 0.18 secs.
+  41.8 TEL | [102] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  42.0 TEL | [102] exit 1 in 0.18 secs.
+  42.2 TEL | [103] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  42.4 TEL | [103] exit 1 in 0.17 secs.
+  42.8 TEL | [104] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  42.9 TEL | [104] exit 1 in 0.18 secs.
+  43.2 TEL | [105] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  43.4 TEL | [105] exit 1 in 0.17 secs.
+  43.6 TEL | [106] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  43.8 TEL | [106] exit 1 in 0.17 secs.
+  44.0 TEL | [107] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  44.2 TEL | [107] exit 1 in 0.17 secs.
+  44.5 TEL | [108] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  44.6 TEL | [108] exit 1 in 0.17 secs.
+  44.9 TEL | [109] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  45.1 TEL | [109] exit 1 in 0.18 secs.
+  45.3 TEL | [110] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  45.5 TEL | [110] exit 1 in 0.18 secs.
+  45.8 TEL | [111] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  45.9 TEL | [111] exit 1 in 0.18 secs.
+  46.2 TEL | [112] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  46.4 TEL | [112] exit 1 in 0.18 secs.
+  46.6 TEL | [113] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  46.8 TEL | [113] exit 1 in 0.18 secs.
+  47.0 TEL | [114] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  47.2 TEL | [114] exit 1 in 0.17 secs.
+  47.5 TEL | [115] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  47.6 TEL | [115] exit 1 in 0.17 secs.
+  47.9 TEL | [116] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  48.1 TEL | [116] exit 1 in 0.19 secs.
+  48.3 TEL | [117] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  48.5 TEL | [117] exit 1 in 0.19 secs.
+  48.8 TEL | [118] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  49.0 TEL | [118] exit 1 in 0.18 secs.
+  49.2 TEL | [119] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  49.4 TEL | [119] exit 1 in 0.18 secs.
+  49.8 TEL | [120] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  49.9 TEL | [120] exit 1 in 0.17 secs.
+  50.2 TEL | [121] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  50.4 TEL | [121] exit 1 in 0.17 secs.
+  50.6 TEL | [122] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  50.8 TEL | [122] exit 1 in 0.18 secs.
+  51.1 TEL | [123] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  51.3 TEL | [123] exit 1 in 0.18 secs.
+  51.6 TEL | [124] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  51.8 TEL | [124] exit 1 in 0.17 secs.
+  52.0 TEL | [125] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  52.2 TEL | [125] exit 1 in 0.18 secs.
+  52.4 TEL | [126] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  52.6 TEL | [126] exit 1 in 0.19 secs.
+  52.9 TEL | [127] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  53.1 TEL | [127] exit 1 in 0.18 secs.
+  53.3 TEL | [128] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  53.5 TEL | [128] exit 1 in 0.18 secs.
+  53.8 TEL | [129] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  54.0 TEL | [129] exit 1 in 0.20 secs.
+  54.2 TEL | [130] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  54.4 TEL | [130] exit 1 in 0.20 secs.
+  54.7 TEL | [131] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  54.8 TEL | [131] exit 1 in 0.17 secs.
+  55.1 TEL | [132] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  55.3 TEL | [132] exit 1 in 0.19 secs.
+  55.5 TEL | [133] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  55.7 TEL | [133] exit 1 in 0.18 secs.
+  56.0 TEL | [134] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  56.1 TEL | [134] exit 1 in 0.18 secs.
+  56.4 TEL | [135] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  56.6 TEL | [135] exit 1 in 0.18 secs.
+  56.8 TEL | [136] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  57.0 TEL | [136] exit 1 in 0.18 secs.
+  57.3 TEL | [137] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  57.5 TEL | [137] exit 1 in 0.19 secs.
+  57.7 TEL | [138] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  57.9 TEL | [138] exit 1 in 0.20 secs.
+  58.3 TEL | [139] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  58.5 TEL | [139] exit 1 in 0.18 secs.
+  58.7 TEL | [140] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  58.9 TEL | [140] exit 1 in 0.20 secs.
+  59.2 TEL | [141] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  59.3 TEL | [141] exit 1 in 0.19 secs.
+  59.6 TEL | [142] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  59.8 TEL | [142] exit 1 in 0.18 secs.
+  60.0 TEL | [143] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  60.2 TEL | [143] exit 1 in 0.17 secs.
+  60.5 TEL | [144] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  60.6 TEL | [144] exit 1 in 0.17 secs.
+  60.9 TEL | [145] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  61.1 TEL | [145] exit 1 in 0.17 secs.
+  61.3 TEL | [146] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  61.5 TEL | [146] exit 1 in 0.18 secs.
+  61.7 TEL | [147] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  61.9 TEL | [147] exit 1 in 0.18 secs.
+  62.2 TEL | [148] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  62.4 TEL | [148] exit 1 in 0.18 secs.
+  62.6 TEL | [149] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  62.8 TEL | [149] exit 1 in 0.18 secs.
+  63.0 TEL | [150] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  63.2 TEL | [150] exit 1 in 0.19 secs.
+  63.5 TEL | [151] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  63.8 TEL | [151] exit 1 in 0.29 secs.
+  64.0 TEL | [152] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  64.2 TEL | [152] exit 1 in 0.18 secs.
+  64.5 TEL | [153] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  64.6 TEL | [153] exit 1 in 0.18 secs.
+  64.9 TEL | [154] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  65.1 TEL | [154] exit 1 in 0.17 secs.
+  65.3 TEL | [155] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  65.5 TEL | [155] exit 1 in 0.17 secs.
+  65.7 TEL | [156] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  65.9 TEL | [156] exit 1 in 0.17 secs.
+  66.2 TEL | [157] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  66.4 TEL | [157] exit 1 in 0.18 secs.
+  66.6 TEL | [158] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  66.8 TEL | [158] exit 1 in 0.17 secs.
+  67.0 TEL | [159] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  67.2 TEL | [159] exit 1 in 0.17 secs.
+  67.5 TEL | [160] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  67.6 TEL | [160] exit 1 in 0.19 secs.
+  67.9 TEL | [161] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  68.1 TEL | [161] exit 1 in 0.17 secs.
+  68.3 TEL | [162] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  68.5 TEL | [162] exit 1 in 0.21 secs.
+  68.8 TEL | [163] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  69.0 TEL | [163] exit 1 in 0.22 secs.
+  69.3 TEL | [164] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  69.5 TEL | [164] exit 1 in 0.21 secs.
+  69.7 TEL | [165] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  69.9 TEL | [165] exit 1 in 0.17 secs.
+  70.2 TEL | [166] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  70.3 TEL | [166] exit 1 in 0.17 secs.
+  70.6 TEL | [167] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  70.8 TEL | [167] exit 1 in 0.17 secs.
+  71.0 TEL | [168] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  71.2 TEL | [168] exit 1 in 0.18 secs.
+  71.4 TEL | [169] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  71.6 TEL | [169] exit 1 in 0.17 secs.
+  71.9 TEL | [170] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  72.0 TEL | [170] exit 1 in 0.17 secs.
+  72.3 TEL | [171] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  72.5 TEL | [171] exit 1 in 0.17 secs.
+  72.7 TEL | [172] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  72.9 TEL | [172] exit 1 in 0.18 secs.
+  73.2 TEL | [173] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  73.3 TEL | [173] exit 1 in 0.18 secs.
+  73.6 TEL | [174] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  73.8 TEL | [174] exit 1 in 0.17 secs.
+  74.0 TEL | [175] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  74.2 TEL | [175] exit 1 in 0.19 secs.
+  74.5 TEL | [176] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  74.6 TEL | [176] exit 1 in 0.18 secs.
+  74.9 TEL | [177] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  75.1 TEL | [177] exit 1 in 0.18 secs.
+  75.3 TEL | [178] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  75.5 TEL | [178] exit 1 in 0.17 secs.
+  75.7 TEL | [179] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  75.9 TEL | [179] exit 1 in 0.17 secs.
+  76.2 TEL | [180] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  76.3 TEL | [180] exit 1 in 0.17 secs.
+  76.6 TEL | [181] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  76.8 TEL | [181] exit 1 in 0.18 secs.
+  77.0 TEL | [182] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  77.2 TEL | [182] exit 1 in 0.18 secs.
+  77.5 TEL | [183] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  77.6 TEL | [183] exit 1 in 0.17 secs.
+  77.9 TEL | [184] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  78.1 TEL | [184] exit 1 in 0.17 secs.
+  78.3 TEL | [185] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  78.5 TEL | [185] exit 1 in 0.18 secs.
+  78.7 TEL | [186] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  78.9 TEL | [186] exit 1 in 0.19 secs.
+  79.2 TEL | [187] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  79.4 TEL | [187] exit 1 in 0.21 secs.
+  79.7 TEL | [188] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  79.8 TEL | [188] exit 1 in 0.18 secs.
+  80.1 TEL | [189] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  80.3 TEL | [189] exit 1 in 0.22 secs.
+  80.6 TEL | [190] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  80.8 TEL | [190] exit 1 in 0.20 secs.
+  81.0 TEL | [191] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  81.2 TEL | [191] exit 1 in 0.21 secs.
+  81.5 TEL | [192] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  81.7 TEL | [192] exit 1 in 0.20 secs.
+  81.9 TEL | [193] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  82.1 TEL | [193] exit 1 in 0.19 secs.
+  82.4 TEL | [194] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  82.6 TEL | [194] exit 1 in 0.21 secs.
+  82.9 TEL | [195] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  83.1 TEL | [195] exit 1 in 0.20 secs.
+  83.3 TEL | [196] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  83.5 TEL | [196] exit 1 in 0.21 secs.
+  83.8 TEL | [197] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  84.0 TEL | [197] exit 1 in 0.19 secs.
+  84.2 TEL | [198] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  84.4 TEL | [198] exit 1 in 0.19 secs.
+  84.7 TEL | [199] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  84.9 TEL | [199] exit 1 in 0.18 secs.
+  85.1 TEL | [200] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  85.3 TEL | [200] exit 1 in 0.18 secs.
+  85.5 TEL | [201] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  85.7 TEL | [201] exit 1 in 0.18 secs.
+  86.0 TEL | [202] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  86.1 TEL | [202] exit 1 in 0.18 secs.
+  86.4 TEL | [203] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  86.6 TEL | [203] exit 1 in 0.17 secs.
+  86.8 TEL | [204] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  87.0 TEL | [204] exit 1 in 0.18 secs.
+  87.3 TEL | [205] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  87.4 TEL | [205] exit 1 in 0.18 secs.
+  87.7 TEL | [206] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  87.9 TEL | [206] exit 1 in 0.17 secs.
+  88.1 TEL | [207] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  88.3 TEL | [207] exit 1 in 0.18 secs.
+  88.6 TEL | [208] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  88.7 TEL | [208] exit 1 in 0.19 secs.
+  89.0 TEL | [209] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  89.2 TEL | [209] exit 1 in 0.18 secs.
+  89.4 TEL | [210] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  89.6 TEL | [210] exit 1 in 0.18 secs.
+  90.0 TEL | [211] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  90.1 TEL | [211] exit 1 in 0.18 secs.
+  90.4 TEL | [212] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  90.6 TEL | [212] exit 1 in 0.19 secs.
+  90.8 TEL | [213] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  91.0 TEL | [213] exit 1 in 0.19 secs.
+  91.3 TEL | [214] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  91.5 TEL | [214] exit 1 in 0.19 secs.
+  91.7 TEL | [215] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  91.9 TEL | [215] exit 1 in 0.20 secs.
+  92.2 TEL | [216] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  92.4 TEL | [216] exit 1 in 0.20 secs.
+  92.6 TEL | [217] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  92.8 TEL | [217] exit 1 in 0.18 secs.
+  93.1 TEL | [218] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  93.3 TEL | [218] exit 1 in 0.18 secs.
+  93.5 TEL | [219] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  93.7 TEL | [219] exit 1 in 0.18 secs.
+  93.9 TEL | [220] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  94.1 TEL | [220] exit 1 in 0.19 secs.
+  94.4 TEL | [221] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  94.6 TEL | [221] exit 1 in 0.18 secs.
+  94.8 TEL | [222] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  95.0 TEL | [222] exit 1 in 0.18 secs.
+  95.2 TEL | [223] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  95.4 TEL | [223] exit 1 in 0.18 secs.
+  95.7 TEL | [224] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  95.9 TEL | [224] exit 1 in 0.18 secs.
+  96.1 TEL | [225] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  96.3 TEL | [225] exit 1 in 0.17 secs.
+  96.5 TEL | [226] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  96.7 TEL | [226] exit 1 in 0.17 secs.
+  97.0 TEL | [227] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  97.1 TEL | [227] exit 1 in 0.18 secs.
+  97.4 TEL | [228] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  97.6 TEL | [228] exit 1 in 0.18 secs.
+  97.8 TEL | [229] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  98.0 TEL | [229] exit 1 in 0.18 secs.
+  98.3 TEL | [230] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  98.4 TEL | [230] exit 1 in 0.18 secs.
+  98.7 TEL | [231] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  98.9 TEL | [231] exit 1 in 0.18 secs.
+  99.1 TEL | [232] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  99.3 TEL | [232] exit 1 in 0.18 secs.
+  99.6 TEL | [233] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+  99.7 TEL | [233] exit 1 in 0.18 secs.
+ 100.0 TEL | [234] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+ 100.2 TEL | [234] exit 1 in 0.17 secs.
+ 100.4 TEL | [235] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+ 100.6 TEL | [235] exit 1 in 0.17 secs.
+ 100.9 TEL | [236] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+ 101.0 TEL | [236] exit 1 in 0.18 secs.
+ 101.3 TEL | [237] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+ 101.5 TEL | [237] exit 1 in 0.18 secs.
+ 101.7 TEL | [238] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+ 101.9 TEL | [238] exit 1 in 0.18 secs.
+ 102.2 TEL | [239] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+ 102.3 TEL | [239] exit 1 in 0.18 secs.
+ 102.6 TEL | [240] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+ 102.8 TEL | [240] exit 1 in 0.18 secs.
+ 103.1 TEL | [241] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+ 103.3 TEL | [241] exit 1 in 0.18 secs.
+ 103.6 TEL | [242] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+ 103.7 TEL | [242] exit 1 in 0.18 secs.
+ 104.0 TEL | [243] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+ 104.2 TEL | [243] exit 1 in 0.18 secs.
+ 104.4 TEL | [244] Capturing: oc --context myproject/192-168-99-106:8443/admin --namespace myproject get pod hello-flask-1-cngnw -o json
+ 104.5 TEL | [245] Running: oc --context myproject/192-168-99-106:8443/admin --namespace myproject apply -f -
+ 104.7 245 | replicationcontroller "hello-flask-1" configured
+ 104.7 TEL | [246] Running: oc --context myproject/192-168-99-106:8443/admin --namespace myproject delete pod --selector deployment=hello-flask-1
+ 104.9 246 | No resources found
+ 104.9 TEL | END SPAN main.py:51(main)  103.3s
