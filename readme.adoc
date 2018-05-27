@@ -25,11 +25,15 @@ docker run -it -p 5000:5000 --rm  burrsutter/flask_web_app
 
 curl localhost:5000
 
+ctrl-c
+
+docker rmi burrsutter/flask_web_app
+
 --------------
 Minishift/OpenShift
 eval $(minishift oc-env) && eval $(minishift docker-env)
 oc login $(minishift ip):8443 -u admin -p admin
-
+oc new-project teleproject
 oc new-build --binary --name=hello-flask -l app=hello-flask
 # creates a BuildConfig and ImageStream
 oc start-build hello-flask --from-dir=. --follow
@@ -38,11 +42,13 @@ oc new-app hello-flask -l app=hello-flask
 # creates a DeploymentConfig, Service, ReplicationController and Pod
 oc expose service hello-flask
 # creates a Route
-curl hello-flask-myproject.$(minishift ip).nip.io
+curl hello-flask-teleproject.$(minishift ip).nip.io
 
 --------------
 Telepresence
+
 brew cask install osxfuse
+
 brew install socat datawire/blackbird/telepresence
 
 telepresence --swap-deployment hello-flask --expose 5000
