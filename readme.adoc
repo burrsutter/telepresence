@@ -42,7 +42,8 @@ curl hello-flask-myproject.$(minishift ip).nip.io
 
 --------------
 Telepresence
+brew cask install osxfuse
+brew install socat datawire/blackbird/telepresence
+
 telepresence --swap-deployment hello-flask --expose 5000
-
-
 
